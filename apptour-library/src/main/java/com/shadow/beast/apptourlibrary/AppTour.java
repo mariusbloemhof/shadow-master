@@ -1,4 +1,4 @@
-package com.vlonjatg.android.apptourlibrary;
+package com.shadow.beast.apptourlibrary;
 
 import android.animation.ArgbEvaluator;
 import android.graphics.Color;

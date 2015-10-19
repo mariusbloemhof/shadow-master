@@ -1,42 +1,62 @@
 package com.shadow.beast.shadow_master;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.app.Fragment;
+import android.widget.Toast;
 
-public class HomeScreenActivity extends AppCompatActivity {
+import com.shadow.beast.apptourlibrary.AppTour;
+import com.shadow.beast.apptourlibrary.MaterialSlide;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_screen);
+public class HomeScreenActivity extends AppTour {
+        @Override
+        public void init(Bundle savedInstanceState) {
 
-    }
+            int firstColor = Color.parseColor("#0097A7");
+            int secondColor = Color.parseColor("#FFA000");
+            int thirdColor = Color.parseColor("#FF5722");
+            int forthColor = Color.parseColor("#673AB7");
+            int customSlideColor = Color.parseColor("#009866");
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_home_screen, menu);
-        return true;
-    }
+            //Create pre-created fragments
+            Fragment firstSlide = MaterialSlide.newInstance(R.drawable.com_shadow_device, "Presentations on the go",
+                    "Get stuff done with or without an internet connection.", Color.BLACK, Color.BLACK);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+            Fragment secondSlide = MaterialSlide.newInstance(R.drawable.com_shadow_device, "Presentations on the go",
+                    "Get stuff done with or without an internet connection.", Color.BLACK, Color.BLACK);
+            //Add slides
+            addSlide(firstSlide, getResources().getColor(R.color.com_shadow_login_background));
+            addSlide(secondSlide, getResources().getColor(R.color.com_shadow_login_background));
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            //Custom slide
+//        addSlide(new CustomSlide(), customSlideColor);
+
+            //Customize tour
+            hideSkip();
+            hideSkip();
+            hideNext();
+            hideDone();
+            setSkipButtonTextColor(Color.WHITE);
+            setNextButtonColorToWhite();
+            setDoneButtonTextColor(Color.WHITE);
+            ShowCustomBottomPanel(new LoginFragment());
         }
 
-        return super.onOptionsItemSelected(item);
+        @Override
+        public void onSkipPressed() {
+            Toast.makeText(this, "Skip", Toast.LENGTH_SHORT).show();
+
+            //Do something after clicking Skip button.
+            //E.x: Go to the sign up slide.
+            setCurrentSlide(4);
+        }
+
+        @Override
+        public void onDonePressed() {
+            Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show();
+
+            //Do something after clicking Done button.
+            //E.x: Finish the intro.
+            finish();
+        }
     }
-}
