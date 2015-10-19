@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/facebook_login_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:layout_below="@+id/register_layout"
+    android:layout_alignLeft="@+id/register_layout"
+    android:gravity="left">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|fill"
+        android:paddingBottom="3dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="4dp">
+
+        <Button
+            android:id="@+id/facebook_login"
+            style="@style/Shadow.Button.ThirdPartyLogin"
+            android:layout_width="260dp"
+            android:background="@drawable/selector_button_facebook_login"
+            android:drawableLeft="@drawable/com_shadow_facebook_logo_72"
+            android:text="   Sign up with Facebook"
+            android:visibility="visible"
+            android:layout_gravity="center_horizontal" />
+
+
+    </LinearLayout>
+</RelativeLayout>

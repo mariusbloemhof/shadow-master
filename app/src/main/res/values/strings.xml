@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Shadow-master</string>
+    <string name="action_settings">Settings</string>
+    <string name="email_address_enter">Enter your email address</string>
+    <string name="lnk_buy_shadow"><a href="http://www.google.com">  I dont have a SHADOW device yet</a></string>
+    <string name="lnk_signup"><a href="http://www.google.com">  Sign up</a></string>
+</resources>

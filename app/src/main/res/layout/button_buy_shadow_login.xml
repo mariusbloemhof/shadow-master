@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/buy_shadow_login"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:layout_below="@+id/twitter_login_layout"
+    android:gravity="left">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:paddingBottom="20dp"
+        android:paddingTop="4dp">
+
+        <TextView
+            android:id="@+id/facebook_login_text"
+            style="@style/Shadow.Button.Text"
+            android:autoLink="all"
+            android:clickable="true"
+            android:drawableLeft="@drawable/com_shadow_shopping_cart_white_64"
+            android:linksClickable="true"
+            android:paddingRight="5dp"
+            android:text="@string/lnk_buy_shadow"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorWhite"
+            android:textColorLink="#ffffff" />
+    </LinearLayout>
+</RelativeLayout>

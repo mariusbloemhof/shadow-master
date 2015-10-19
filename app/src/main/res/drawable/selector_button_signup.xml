@@ -1,0 +1,23 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape>
+            <stroke android:width="2dp" android:color="@color/com_shadow_login_help_button_label_push_dark" />
+            <gradient android:angle="180" android:endColor="@color/com_shadow_login_help_button_label_push_dark" android:startColor="@color/com_shadow_login_help_button_label_push_dark" />
+            <corners android:bottomLeftRadius="20dp" android:bottomRightRadius="20dp" android:topLeftRadius="20dp" android:topRightRadius="20dp" />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape>
+            <stroke android:width="2dp" android:color="@color/com_shadow_facebook_login_button_focus" />
+            <gradient android:angle="180" android:endColor="@color/com_shadow_login_text_hint" android:startColor="@color/com_shadow_login_text_hint" />
+            <corners android:bottomLeftRadius="20dp" android:bottomRightRadius="20dp" android:topLeftRadius="20dp" android:topRightRadius="20dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <stroke android:width="2dp" android:color="@color/com_shadow_login_text_hint" />
+        </shape>
+    </item>
+</selector>
+

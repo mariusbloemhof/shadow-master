@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/register_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:fitsSystemWindows="true"
+    android:gravity="left"
+    android:paddingTop="8dp"
+    android:paddingBottom="10dp">
+
+    <EditText
+        android:id="@+id/edtEmail_address_register"
+        style="@style/Shadow.Text.Email"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:background="@drawable/selector_edit_static"
+        android:ems="10"
+        android:hint="@string/email_address_enter"
+        android:inputType="textEmailAddress"
+        android:paddingRight="5dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/colorBlack" />
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|fill"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/edtEmail_address_register"
+        android:paddingLeft="5dp"
+        android:paddingTop="4dp">
+
+        <TextView
+            android:id="@+id/facebook_login_text"
+            style="@style/Shadow.Button.Text"
+            android:autoLink="all"
+            android:clickable="true"
+            android:drawableLeft="@drawable/com_shadow_pencil_white"
+            android:linksClickable="true"
+            android:paddingRight="5dp"
+            android:text="@string/lnk_signup"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorWhite"
+            android:textColorLink="#ffffff" />
+    </LinearLayout>
+
+</RelativeLayout>
