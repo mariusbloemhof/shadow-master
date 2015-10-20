@@ -16,14 +16,15 @@
         android:layout_width="fill_parent"
         android:layout_height="0.5dp"
         android:layout_above="@+id/controlsRelativeLayout"
-        android:background="@android:color/white" />
+        android:background="@android:color/transparent" />
 
     <RelativeLayout
         android:id="@+id/controlsRelativeLayout"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
         android:layout_alignParentBottom="false"
-        android:layout_above="@+id/CustomBottomPanel">
+        android:layout_above="@+id/CustomBottomPanel"
+        android:background="#ffffff">
 
         <Button
             android:id="@+id/skipIntroButton"
@@ -73,6 +74,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:gravity="fill"
         android:id="@+id/CustomBottomPanel"
         android:layout_alignParentBottom="true">
     </RelativeLayout>
