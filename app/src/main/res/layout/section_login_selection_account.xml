@@ -10,8 +10,8 @@
         android:id="@+id/edtEmail_address_register"
         style="@style/Shadow.Text.Email"
         android:layout_width="300dp"
-        android:layout_height="28dp"
-        android:background="@drawable/selector_edit_static"
+        android:layout_height="26dp"
+        android:background="@drawable/selector_edit_corner_top"
         android:drawableLeft="@drawable/com_shadow_email_black"
         android:ems="10"
         android:hint="@string/email_address_enter"
@@ -24,19 +24,19 @@
         android:layout_width="300dp"
         android:layout_height="1dip"
         android:layout_below="@+id/edtEmail_address_register"
-        android:background="@color/com_shadow_login_text_hint" />
+        android:background="@color/com_shadow_login_help_button_label" />
 
     <EditText
         android:id="@+id/edtPassword_register"
         style="@style/Shadow.Text.Email"
         android:layout_width="300dp"
-        android:layout_height="28dp"
+        android:layout_height="26dp"
         android:layout_below="@+id/view_line"
         android:background="@drawable/selector_edit_corner_bottom"
         android:drawableLeft="@drawable/com_shadow_locked_black"
         android:ems="10"
         android:hint="@string/password_enter"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:paddingBottom="2dp"
         android:paddingRight="5dp"
         android:textColor="@color/colorBlack" />
@@ -57,8 +57,8 @@
             android:id="@+id/btn_login"
             style="@style/Shadow.Button.ThirdPartyLogin"
             android:layout_width="fill_parent"
-            android:layout_weight="1"
-            android:layout_height="40dp"
+            android:layout_weight="0.7"
+            android:layout_height="36dp"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/linearLayout"
             android:layout_marginRight="2dp"
@@ -72,7 +72,7 @@
             style="@style/Shadow.Button.ThirdPartyLogin"
             android:layout_width="fill_parent"
             android:layout_weight="1"
-            android:layout_height="40dp"
+            android:layout_height="36dp"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/linearLayout"
             android:layout_marginLeft="2dp"
@@ -90,8 +90,7 @@
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:gravity="center_vertical|fill"
-        android:paddingTop="4dp">
+        android:gravity="center_vertical|fill">
 
         <TextView
             android:id="@+id/facebook_login_text"

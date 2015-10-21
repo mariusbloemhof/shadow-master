@@ -26,4 +26,8 @@
     <color name="com_shadow_login_pressed">#466c49</color>
     <color name="com_shadow_signup_background">#869e88</color>
     <color name="com_shadow_signup_pressed">#5b6c5d</color>
+    <color name="com_shadow_login_activity_background_start">#d4dae6</color>
+    <color name="com_shadow_login_activity_background_end">#4d628c</color>
+
+
 </resources>
