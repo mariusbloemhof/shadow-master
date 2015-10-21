@@ -3,29 +3,94 @@
     android:id="@+id/register_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingBottom="8dp"
-    android:paddingTop="9dp">
+    android:paddingBottom="3dp"
+    android:paddingTop="5dp">
 
     <EditText
         android:id="@+id/edtEmail_address_register"
         style="@style/Shadow.Text.Email"
         android:layout_width="300dp"
-        android:layout_height="24dp"
+        android:layout_height="28dp"
         android:background="@drawable/selector_edit_static"
+        android:drawableLeft="@drawable/com_shadow_email_black"
         android:ems="10"
         android:hint="@string/email_address_enter"
+        android:inputType="textEmailAddress"
+        android:paddingRight="5dp"
+        android:textColor="@color/colorBlack" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="300dp"
+        android:layout_height="1dip"
+        android:layout_below="@+id/edtEmail_address_register"
+        android:background="@color/com_shadow_login_text_hint" />
+
+    <EditText
+        android:id="@+id/edtPassword_register"
+        style="@style/Shadow.Text.Email"
+        android:layout_width="300dp"
+        android:layout_height="28dp"
+        android:layout_below="@+id/view_line"
+        android:background="@drawable/selector_edit_corner_bottom"
+        android:drawableLeft="@drawable/com_shadow_locked_black"
+        android:ems="10"
+        android:hint="@string/password_enter"
         android:inputType="textEmailAddress"
         android:paddingBottom="2dp"
         android:paddingRight="5dp"
         android:textColor="@color/colorBlack" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtPassword_register"
+        android:layout_alignLeft="@+id/edtPassword_register"
+        android:layout_alignRight="@+id/edtPassword_register"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical|fill"
+        android:paddingTop="4dp">
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/Shadow.Button.ThirdPartyLogin"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/linearLayout"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/selector_button_login"
+            android:drawableLeft="@drawable/com_shadow_secure_white"
+            android:drawableRight="@drawable/com_shadow_go_white"
+            android:text="Log in" />
+
+        <Button
+            android:id="@+id/btn_signup"
+            style="@style/Shadow.Button.ThirdPartyLogin"
+            android:layout_width="fill_parent"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/linearLayout"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/selector_button_signup"
+            android:drawableLeft="@drawable/com_shadow_pencil_white"
+            android:drawableRight="@drawable/com_shadow_go_white"
+            android:text="Sign up" />
+
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linearLayout_forgotpassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edtEmail_address_register"
+        android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
         android:gravity="center_vertical|fill"
-        android:paddingLeft="5dp"
         android:paddingTop="4dp">
 
         <TextView
@@ -36,10 +101,10 @@
             android:drawableLeft="@drawable/com_shadow_pencil_white"
             android:linksClickable="true"
             android:paddingRight="5dp"
-            android:text="@string/lnk_signup"
+            android:text="@string/lnk_forgot_password"
             android:textAlignment="textStart"
             android:textColor="@color/colorWhite"
             android:textColorLink="#ffffff" />
-    </LinearLayout>
 
+    </LinearLayout>
 </RelativeLayout>

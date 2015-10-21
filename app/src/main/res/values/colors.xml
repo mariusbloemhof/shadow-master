@@ -21,5 +21,9 @@
     <color name="com_shadow_twitter_login_button">#2DAAE2</color>
     <color name="com_shadow_twitter_login_button_push">#2588B5</color>
     <color name="com_shadow_twitter_login_button_focus">#2788BE</color>
-    <color name="com_shadow_login_background">#838383</color>
+    <color name="com_shadow_login_activity_background">#bdccd1</color>
+    <color name="com_shadow_login_background">#39a141</color>
+    <color name="com_shadow_login_pressed">#466c49</color>
+    <color name="com_shadow_signup_background">#869e88</color>
+    <color name="com_shadow_signup_pressed">#5b6c5d</color>
 </resources>

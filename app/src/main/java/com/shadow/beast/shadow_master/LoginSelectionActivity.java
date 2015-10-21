@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.shadow.beast.apptourlibrary.AppTour;
 import com.shadow.beast.apptourlibrary.MaterialSlide;
 
-public class HomeScreenActivity extends AppTour {
+public class LoginSelectionActivity extends AppTour {
         @Override
         public void init(Bundle savedInstanceState) {
 
@@ -25,8 +25,8 @@ public class HomeScreenActivity extends AppTour {
             Fragment secondSlide = MaterialSlide.newInstance(R.drawable.com_shadow_device, "Presentations on the go",
                     "Get stuff done with or without an internet connection.", Color.BLACK, Color.BLACK);
             //Add slides
-            addSlide(firstSlide, getResources().getColor(R.color.com_shadow_login_background));
-            addSlide(secondSlide, getResources().getColor(R.color.com_shadow_login_background));
+            addSlide(firstSlide, getResources().getColor(R.color.com_shadow_login_activity_background));
+            addSlide(secondSlide, getResources().getColor(R.color.com_shadow_login_activity_background));
 
             //Custom slide
 //        addSlide(new CustomSlide(), customSlideColor);
