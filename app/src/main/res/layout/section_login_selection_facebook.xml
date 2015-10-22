@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@+id/register_layout"
     android:layout_alignLeft="@+id/register_layout"
+    android:paddingBottom="7dp"
     android:gravity="left">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
