@@ -1,8 +1,11 @@
 package com.shadow.beast.shadow_master;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.shadow.beast.apptourlibrary.AppTour;
@@ -40,6 +43,8 @@ public class LoginSelectionActivity extends AppTour {
             setNextButtonColorToWhite();
             setDoneButtonTextColor(Color.WHITE);
             ShowCustomBottomPanel(new LoginFragment());
+
+
         }
 
         @Override

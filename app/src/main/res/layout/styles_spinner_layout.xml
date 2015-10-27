@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/styles_spinner_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:ellipsize="marquee"
+    android:fontFamily="sans-serif"
+    android:gravity="left|center_vertical"
+    android:textAlignment="gravity"
+    android:textColor="@color/com_shadow_login_help_button_label_push"
+    android:textSize="14sp" />

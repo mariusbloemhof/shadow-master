@@ -24,6 +24,11 @@
         <item name="android:textSize">13sp</item>
     </style>
 
+    <style name="Shadow.Spinner" parent="@android:style/Widget.Spinner">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="Shadow.Button.ThirdPartyLogin" parent="Shadow.Button">
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
@@ -47,6 +52,29 @@
         <item name="android:textColor">@color/colorBlack</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="Shadow.Text.signup" parent="@android:style/Widget.Button">>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">31dp</item>
+        <item name="android:layout_gravity">left</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:paddingLeft">18dp</item>
+        <item name="android:layout_marginLeft">18dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginRight">18dp</item>
+        <item name="android:background">@color/colorTransparent</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColorHint">@color/com_shadow_login_help_button_label_push</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Shadow.Spinner.signup" parent="Shadow.Spinner">
+        <item name="android:layout_marginLeft">18dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:paddingLeft">18dp</item>
+        <item name="android:layout_marginRight">18dp</item>
     </style>
 
 </resources>
