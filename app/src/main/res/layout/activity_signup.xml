@@ -5,12 +5,49 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background_login"
     android:paddingBottom="17dp"
-    android:paddingTop="5dp">
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+    <LinearLayout
+        android:id="@+id/custom_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_actionbar"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back_signup"
+            style="@style/Shadow.Button.ThirdPartyLogin"
+            android:layout_width="87dp"
+            android:layout_height="34dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/linearLayout"
+            android:layout_margin="4dp"
+            android:background="@drawable/selector_actionbar_button"
+            android:drawableLeft="@drawable/com_shadow_back_orange_64"
+            android:text="Back"
+            android:textColor="@color/com_shadow_actionbar_text"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="29dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:text="Signup / Registration"
+            android:textAlignment="textEnd"
+            android:textColor="@color/com_shadow_actionbar_text"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/edtSignup_first_name"
         style="@style/Shadow.Text.signup"
         android:layout_width="match_parent"
+        android:layout_below="@+id/custom_action_bar"
         android:layout_marginLeft="18dp"
         android:background="@drawable/selector_edit_corners"
         android:ems="10"
@@ -101,8 +138,8 @@
         android:layout_height="28dp"
         android:layout_below="@+id/edtDate_of_birth"
         android:background="@drawable/selector_edit_corners"
-        android:textAlignment="viewStart"
         android:entries="@array/medical_aid_provider_arrays"
+        android:textAlignment="viewStart"
         android:touchscreenBlocksFocus="true" />
 
     <EditText
@@ -116,6 +153,73 @@
         android:inputType="phone"
         android:paddingBottom="2dp"
         android:paddingRight="5dp"
+        android:layout_marginBottom="2dp"
         android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/txt_medical_provider_info"
+        style="@style/Shadow.Button.Text"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_alignRight="@+id/edtMedical_aid_no"
+        android:layout_below="@+id/edtMedical_aid_no"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="2dp"
+        android:autoLink="all"
+        android:clickable="true"
+        android:drawableLeft="@drawable/com_shadow_question_white_64"
+        android:linksClickable="true"
+        android:paddingRight="5dp"
+        android:text="@string/lnk_medical_provider_info"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textColorLink="#ffffff"
+        android:textSize="10dp" />
+
+    <Spinner
+        android:id="@+id/spnSecurity_provider"
+        style="@style/Shadow.Spinner.signup"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:layout_below="@+id/txt_medical_provider_info"
+        android:background="@drawable/selector_edit_corners"
+        android:entries="@array/medical_aid_provider_arrays"
+        android:textAlignment="viewStart"
+        android:touchscreenBlocksFocus="true" />
+
+    <EditText
+        android:id="@+id/edtSecurity_provider_contact_no"
+        style="@style/Shadow.Text.signup"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/spnSecurity_provider"
+        android:background="@drawable/selector_edit_corners"
+        android:ems="10"
+        android:hint="@string/security_provider_contact"
+        android:inputType="phone"
+        android:paddingBottom="2dp"
+        android:paddingRight="5dp"
+        android:textColor="@color/colorBlack" />
+
+    <TextView
+        android:id="@+id/txt_security_provider_info"
+        style="@style/Shadow.Button.Text"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_alignRight="@+id/edtSecurity_provider_contact_no"
+        android:layout_below="@+id/edtSecurity_provider_contact_no"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="3dp"
+        android:autoLink="all"
+        android:clickable="true"
+        android:drawableLeft="@drawable/com_shadow_question_white_64"
+        android:linksClickable="true"
+        android:paddingRight="5dp"
+        android:text="@string/lnk_medical_provider_info"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
+        android:textColorLink="#ffffff"
+        android:textSize="10dp" />
+
 
 </RelativeLayout>

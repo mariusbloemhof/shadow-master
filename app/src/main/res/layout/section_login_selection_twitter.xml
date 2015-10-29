@@ -11,15 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical|fill"
-        android:paddingBottom="3dp"
-        android:paddingLeft="5dp"
-        android:paddingTop="4dp">
+        android:paddingBottom="2dp">
 
         <Button
             android:id="@+id/twitter_login"
             style="@style/Shadow.Button.ThirdPartyLogin"
-            android:layout_width="260dp"
-            android:layout_height="36dp"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:background="@drawable/selector_button_twitter"
             android:drawableLeft="@drawable/com_shadow_twitter_login_logo"
             android:text="   Sign up with Twitter"

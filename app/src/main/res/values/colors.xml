@@ -7,7 +7,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorTransparent">#00FFFFFF</color>
     <color name="com_shadow_login_button">#c5cfe2</color>
-    <color name="com_shadow_login_button_push">#b2bbcc</color>
+    <color name="com_shadow_login_button_push">#91481d</color>
     <color name="com_shadow_login_button_focus">#35CCCCCC</color>
     <color name="com_shadow_login_help_button_label">#E0E0E0</color>
     <color name="com_shadow_login_help_button_label_push">#AAAAAA</color>
@@ -26,8 +26,11 @@
     <color name="com_shadow_login_pressed">#466c49</color>
     <color name="com_shadow_signup_background">#869e88</color>
     <color name="com_shadow_signup_pressed">#5b6c5d</color>
-    <color name="com_shadow_login_activity_background_start">#d4dae6</color>
-    <color name="com_shadow_login_activity_background_end">#4d628c</color>
+    <color name="com_shadow_login_activity_background_start">#464f60</color>
+    <color name="com_shadow_login_activity_background_end">#374050</color>
+    <color name="com_shadow_actionbar_text">#e1661f</color>
+    <color name="com_shadow_actionbar_background">#3d3d3d</color>
+
 
 
 </resources>

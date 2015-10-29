@@ -1,13 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".SignupActivity">
+>
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:icon="@drawable/com_shadow_pencil_black"
+        android:id="@+id/action_back"
+        android:icon="@drawable/com_shadow_back_orange_64"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_back_text"
         android:title="Back"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom"
+
+        />
 
 
 </menu>

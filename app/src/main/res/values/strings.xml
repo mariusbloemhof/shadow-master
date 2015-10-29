@@ -6,10 +6,12 @@
     <string name="last_name">Last Name</string>
     <string name="mobile_number">Mobile number</string>
     <string name="medical_aid_no">Medical Aid Member no</string>
+    <string name="security_provider_contact">Security company contact no</string>
     <string name="id_number">Id number</string>
     <string name="date_of_birth">Date of birth</string>
     <string name="password_enter">Password</string>
     <string name="lnk_buy_shadow"> No SHADOW?<a href="http://www.google.com"><b><u> Buy now</u></b></a></string>
+    <string name="lnk_medical_provider_info"><a href="http://www.google.com"><u>  Why do we need this</u></a></string>
     <string name="lnk_forgot_password"><a href="http://www.google.com"><u> Existing account?</u></a></string>
     <string name="title_activity_test">TestActivity</string>
     <string name="register"><u>Register</u></string>
@@ -24,6 +26,12 @@
         <item>Selfmed</item>
         <item>Govmed</item>
         <item>Affinity Health</item>
+    </string-array>
+
+    <string-array name="security_provider_arrays">
+        <item>ADT</item>
+        <item>Wolf Security</item>
+        <item>Zambli</item>
     </string-array>
 
 </resources>

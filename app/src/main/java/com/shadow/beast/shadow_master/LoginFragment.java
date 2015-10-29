@@ -1,5 +1,6 @@
 package com.shadow.beast.shadow_master;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,14 +20,18 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_login_selection, container, false);
 
-        Button next = (Button) rootView.findViewById(R.id.btn_login);
-        next.setOnClickListener(new View.OnClickListener() {
+        Button btnsignup = (Button) rootView.findViewById(R.id.btn_login);
+        btnsignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), SignupActivity.class);
-                startActivityForResult(myIntent, 0);
+                Intent intentSignup = new Intent(view.getContext(), SignupActivity.class);
+
+
+                startActivityForResult(intentSignup, 0);
             }
 
         });
+
+
 
 
         return rootView;

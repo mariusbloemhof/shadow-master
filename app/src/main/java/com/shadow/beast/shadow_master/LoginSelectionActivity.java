@@ -23,10 +23,10 @@ public class LoginSelectionActivity extends AppTour {
 
             //Create pre-created fragments
             Fragment firstSlide = MaterialSlide.newInstance(R.drawable.com_shadow_device, "Presentations on the go",
-                    "Get stuff done with or without an internet connection.", Color.BLACK, Color.BLACK);
+                    "Get stuff done with or without an internet connection.", Color.WHITE, Color.WHITE);
 
             Fragment secondSlide = MaterialSlide.newInstance(R.drawable.com_shadow_device, "Presentations on the go",
-                    "Get stuff done with or without an internet connection.", Color.BLACK, Color.BLACK);
+                    "Get stuff done with or without an internet connection.", Color.WHITE, Color.WHITE);
             //Add slides
             addSlide(firstSlide, getResources().getColor(R.color.com_shadow_login_activity_background_start));
             addSlide(secondSlide, getResources().getColor(R.color.com_shadow_login_activity_background_start));

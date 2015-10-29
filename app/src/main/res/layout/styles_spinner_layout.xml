@@ -7,5 +7,5 @@
     android:fontFamily="sans-serif"
     android:gravity="left|center_vertical"
     android:textAlignment="gravity"
-    android:textColor="@color/com_shadow_login_help_button_label_push"
+    android:textColor="@color/colorBlack"
     android:textSize="14sp" />

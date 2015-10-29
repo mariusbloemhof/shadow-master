@@ -4,21 +4,21 @@
         <shape>
             <stroke android:width="2dp" android:color="@color/com_shadow_facebook_login_button_push" />
             <gradient android:angle="180" android:endColor="@color/com_shadow_facebook_login_button_push" android:startColor="@color/com_shadow_facebook_login_button_push" />
-            <corners android:bottomLeftRadius="4dp" android:bottomRightRadius="4dp" android:topLeftRadius="4dp" android:topRightRadius="4dp" />
+            <corners android:bottomLeftRadius="2dp" android:bottomRightRadius="2dp" android:topLeftRadius="2dp" android:topRightRadius="2dp" />
         </shape>
     </item>
     <item android:state_focused="true">
         <shape>
             <stroke android:width="2dp" android:color="@color/com_shadow_facebook_login_button_focus" />
             <gradient android:angle="180" android:endColor="@color/com_shadow_facebook_login_button_focus" android:startColor="@color/com_shadow_facebook_login_button_focus" />
-            <corners android:bottomLeftRadius="4dp" android:bottomRightRadius="4dp" android:topLeftRadius="4dp" android:topRightRadius="4dp" />
+            <corners android:bottomLeftRadius="2dp" android:bottomRightRadius="2dp" android:topLeftRadius="2dp" android:topRightRadius="2dp" />
         </shape>
     </item>
     <item>
         <shape>
             <stroke android:width="2dp" android:color="@color/com_shadow_facebook_login_button" />
             <gradient android:angle="180" android:endColor="@color/com_shadow_facebook_login_button" android:startColor="@color/com_shadow_facebook_login_button" />
-            <corners android:bottomLeftRadius="4dp" android:bottomRightRadius="4dp" android:topLeftRadius="4dp" android:topRightRadius="4dp" />
+            <corners android:bottomLeftRadius="2dp" android:bottomRightRadius="2dp" android:topLeftRadius="2dp" android:topRightRadius="2dp" />
         </shape>
     </item>
 </selector>
