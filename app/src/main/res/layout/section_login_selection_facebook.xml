@@ -15,7 +15,7 @@
         android:paddingBottom="3dp"
         android:paddingTop="4dp">
         <Button
-            android:id="@+id/facebook_login"
+            android:id="@+id/btnfacebook_login"
             style="@style/Shadow.Button.ThirdPartyLogin"
             android:layout_width="300dp"
             android:layout_height="40dp"
