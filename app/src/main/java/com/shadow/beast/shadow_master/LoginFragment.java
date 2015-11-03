@@ -53,8 +53,6 @@ public class LoginFragment extends Fragment {
         btnsignup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intentSignup = new Intent(view.getContext(), SignupActivity.class);
-
-
                 startActivityForResult(intentSignup, 0);
             }
 
@@ -67,72 +65,10 @@ public class LoginFragment extends Fragment {
         mBtnSignupFaceBook = (Button) view.findViewById(R.id.btnfacebook_login);
 
         //listen to register button click
-        mBtnSignupFaceBook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //toast something
+        FacebookDetails facebookDetails = new FacebookDetails();
+        mBtnSignupFaceBook.setOnClickListener(facebookDetails.OnFacebookSignup(view, LoginFragment.this.getActivity()));
 
-                final List<String> permissions = new ArrayList<String>();
-                permissions.add("public_profile");
-                permissions.add("user_status");
-                permissions.add("user_friends");
-                permissions.add("email");
-                permissions.add("user_birthday");
-
-                Toast.makeText(view.getContext(), "User trying to sign up through Facebook!", Toast.LENGTH_LONG).show();
-
-                ParseFacebookUtils.logInWithReadPermissionsInBackground(LoginFragment.this.getActivity(), permissions, new LogInCallback() {
-                    @Override
-                    public void done(ParseUser user, ParseException err) {
-                        if (user == null) {
-                            Toast.makeText(view.getContext(), "Error: " + err, Toast.LENGTH_LONG).show();
-                            Log.d("MyApp", "Error: " + err);
-                        } else {
-                            if (user.isNew()) {
-                                getUserDetailsFromFB();
-                                Toast.makeText(view.getContext(), "User signed up and logged in through Facebook!", Toast.LENGTH_LONG).show();
-                            } else {
-                                getUserDetailsFromFB();
-                                Toast.makeText(view.getContext(), "User logged in through Facebook!", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    }
-                });
-
-            }
-        });
     }
 
-    private void getUserDetailsFromFB() {
-
-        GraphRequest request = GraphRequest.newMeRequest(
-                AccessToken.getCurrentAccessToken(),
-                new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                        try {
-                            name = object.getString("name");
-                            lastname = object.getString("last_name");
-                            firstname = object.getString("first_name");
-                            email = object.getString("email");
-                            saveNewUser();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-        Bundle parameters = new Bundle();
-        parameters.putString("fields", "id,name,last_name,link,email,first_name");
-        request.setParameters(parameters);
-        request.executeAsync();
-    }
-
-    private void saveNewUser() {
-        parseUser = ParseUser.getCurrentUser();
-        parseUser.put("first_name", firstname);
-        parseUser.put("last_name", lastname);
-        parseUser.setEmail(email);
-        parseUser.saveInBackground();
-    }
 
 }
