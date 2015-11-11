@@ -8,7 +8,10 @@ import android.support.annotation.ArrayRes;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.telephony.TelephonyManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,6 +27,7 @@ import com.parse.ParseUser;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
@@ -32,6 +36,7 @@ public class SignupActivity extends AppCompatActivity {
     protected EditText edtFirstName; //edtSignup_first_name
     protected EditText edtLastName; //edtSignup_first_name
     protected EditText edtMobileNo; //edtSignup_first_name
+    protected EditText edtSecurityPhoneNo;
 
     private void InitializeSpinner(@IdRes int spinnerid, @ArrayRes int arrayid, String defaultText){
         List<String> list = new ArrayList<String>();
@@ -70,12 +75,26 @@ public class SignupActivity extends AppCompatActivity {
             edtLastName.setText((String) parseUser.get("last_name"));
         }
         edtMobileNo = (EditText)findViewById(R.id.edtSignup_mobile_no);
+        edtMobileNo.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         edtMobileNo.setText(getMy10DigitPhoneNumber());
+
+        InitBirthDate();
+
+        edtSecurityPhoneNo = (EditText)findViewById(R.id.edtSecurity_provider_contact_no);
+        edtSecurityPhoneNo.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
         Button btnsignupBack = (Button)findViewById(R.id.btn_back_signup);
         btnsignupBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        Button btnsignupNext = (Button)findViewById(R.id.btn_next_signup);
+        btnsignupNext.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intentMap = new Intent(view.getContext(), MapsActivity.class);
+                startActivityForResult(intentMap, 0);
             }
         });
     }
@@ -96,6 +115,37 @@ public class SignupActivity extends AppCompatActivity {
 
     private String getMy10DigitPhoneNumber(){
         String s = getMyPhoneNumber();
-        return s != null && s.length() > 2 ? s.substring(2) : null;
+        return s != null && s.length() > 1 ? s.substring(1) : null;
+    }
+
+    private void InitBirthDate() {
+//get the reference of this edit text field
+        final EditText  etNICNO_Sender=(EditText)findViewById(R.id.edtDate_of_birth);
+  /*add textChangeListner with TextWatcher argument
+         by adding text change listner with text watcher we can get three methods of
+         Edit Text 1) onTextChanged 2) beforeTextChanged 3) afterTextChanged
+         these methods work when user types in text feild.
+   */
+        etNICNO_Sender.addTextChangedListener(new TextWatcher() {
+            int len=0;
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String str = etNICNO_Sender.getText().toString();
+
+                if((str.length()==4 && len <str.length()) || (str.length()==7 && len <str.length())){
+                    //checking length  for backspace.
+                    etNICNO_Sender.append("-");
+                    //Toast.makeText(getBaseContext(), "add minus", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                String str = etNICNO_Sender.getText().toString();
+                len = str.length();
+            }
+            @Override
+            public void afterTextChanged(Editable s) {   }
+        });
     }
 }
