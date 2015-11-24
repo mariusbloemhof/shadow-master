@@ -40,9 +40,6 @@ public class LoginFragment extends Fragment {
     protected Button mBtnSignupFaceBook;
     protected ParseUser parseUser;
     protected String name;
-    protected String lastname;
-    protected String firstname;
-    protected String email;
 
     @Nullable
     @Override
