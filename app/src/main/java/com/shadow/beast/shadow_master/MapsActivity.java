@@ -53,8 +53,8 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
     private static final String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
     private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
     private static final String OUT_JSON = "/json";
-//    private static final String API_KEY = "AIzaSyDAZr-xL9iUPMqLL727m_FbSoXbKlD7aD0";
-    private static final String API_KEY = "AIzaSyAU9ShujnIg3IDQxtPr7Q1qOvFVdwNmWc4";
+    private static final String API_KEY = "AIzaSyAehORbYkgLVAC8tagNlCcdMvGJfgNEQIU";
+//    private static final String API_KEY = "AIzaSyAU9ShujnIg3IDQxtPr7Q1qOvFVdwNmWc4";
 
     public static final String TAG = MapsActivity.class.getSimpleName();
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
