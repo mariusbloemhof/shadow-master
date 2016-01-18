@@ -11,39 +11,49 @@
         android:id="@+id/googleMap"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="fill_parent"
         tools:context="com.shadow.beast.shadow_master.MapsActivity"
-        />
+
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
+        android:layout_margin="6dp"
         android:id="@+id/searchAddress"
         android:layout_height="wrap_content"
-        android:background="@color/com_facebook_likeboxcountview_text_color"
+        android:background="@color/colorWhite"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:alpha="0.8"
         android:layout_alignParentStart="true">
 
         <AutoCompleteTextView
-            android:drawableLeft="@drawable/com_shadow_magnifier_white_64"
-            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/com_shadow_magnifier_black_64"
+                        android:padding="5dp"
             android:id="@+id/autoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:inputType="textPhonetic"
             android:textSize="15dp"
             android:alpha="1"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/com_facebook_button_background_color_focused_disabled"
             android:allowUndo="true">
-            <requestFocus />
         </AutoCompleteTextView>
 
+        <Button
+            android:id="@+id/btnLocationPin"
+            style="@style/Shadow.Button.ThirdPartyLogin"
+            android:layout_width="38dp"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/com_shadow_current_location_black_64"
+            android:background="@color/colorWhite"
+            android:visibility="visible"
+            android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
-
-
-
 
 
 </RelativeLayout>

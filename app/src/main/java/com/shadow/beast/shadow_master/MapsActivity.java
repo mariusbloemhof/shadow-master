@@ -11,6 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.drive.Drive;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -46,7 +51,8 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.Toast;
 
-public class MapsActivity extends FragmentActivity implements LocationProvider.LocationCallback {
+public class MapsActivity extends FragmentActivity implements LocationProvider.LocationCallback,
+        GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String LOG_TAG = "ExampleApp";
 
@@ -60,12 +66,23 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private LocationProvider mLocationProvider;
     private EditText edtAddress; //edtSignup_first_name
+    private GoogleApiClient mGoogleApiClient;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
+
+        // Create an instance of GoogleAPIClient.
+        if (mGoogleApiClient == null) {
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
+
 
         setUpMapIfNeeded();
 
@@ -89,12 +106,42 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
             }
         });
 
+        Button btnFindMyLocation = (Button) findViewById(R.id.btnLocationPin);
+        btnFindMyLocation.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                getMyLocation();
+            }
+        });
+
    }
+
+    @Override
+    public void onConnected(Bundle connectionHint) {
+        // Connected to Google Play services!
+        // The good stuff goes here.
+    }
+
+    @Override
+    public void onConnectionSuspended(int cause) {
+        // The connection has been interrupted.
+        // Disable any UI components that depend on Google APIs
+        // until onConnected() is called.
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult result) {
+        // This callback is important for handling errors that
+        // may occur while attempting to connect with Google.
+        //
+        // More about this in the 'Handle Connection Failures' section.
+
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
+        mGoogleApiClient.connect();
         mLocationProvider.connect();
     }
 
@@ -102,6 +149,8 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
     protected void onPause() {
         super.onPause();
         mLocationProvider.disconnect();
+        mGoogleApiClient.disconnect();
+
     }
 
     /**
@@ -165,6 +214,26 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
         //searchAddress();
 
     }
+
+    private void getMyLocation()
+    {
+        Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        if (mLastLocation != null) {
+//            mMap.setMyLocationEnabled(true);
+//            Location mylocation  = mMap.getMyLocation();
+            final LatLng location = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(location)      // Sets the center of the map to location user
+                    .zoom(17)                   // Sets the zoom
+                    .bearing(90)                // Sets the orientation of the camera to east
+                    .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                    .build();                   // Creates a CameraPosition from the builder
+            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+    }
+
+
+
+    };
 
     public void searchAddress()
     {
