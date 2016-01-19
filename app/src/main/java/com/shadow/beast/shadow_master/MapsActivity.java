@@ -60,13 +60,13 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
     private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
     private static final String OUT_JSON = "/json";
     private static final String API_KEY = "AIzaSyAehORbYkgLVAC8tagNlCcdMvGJfgNEQIU";
-//    private static final String API_KEY = "AIzaSyAU9ShujnIg3IDQxtPr7Q1qOvFVdwNmWc4";
 
     public static final String TAG = MapsActivity.class.getSimpleName();
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private LocationProvider mLocationProvider;
     private EditText edtAddress; //edtSignup_first_name
     private GoogleApiClient mGoogleApiClient;
+    private AutoCompleteTextView autoCompView;
 
 
     @Override
@@ -88,21 +88,13 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
 
         mLocationProvider = new LocationProvider(this, this);
 
-//        Button btnSearchAddress = (Button)findViewById(R.id.btnSearchAddress);
-//        btnSearchAddress.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                searchAddress();
-//            }
-//
-//        });
-
-        AutoCompleteTextView autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
+        autoCompView = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView);
 
         autoCompView.setAdapter(new GooglePlacesAutocompleteAdapter(this, R.layout.list_item));
         autoCompView.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                searchAddress();
+                searchAddress("");
             }
         });
 
@@ -113,6 +105,12 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
             }
         });
 
+        Button btnsignupBack = (Button)findViewById(R.id.btn_back_addAddress);
+        btnsignupBack.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                finish();
+            }
+        });
    }
 
     @Override
@@ -132,9 +130,7 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
     public void onConnectionFailed(ConnectionResult result) {
         // This callback is important for handling errors that
         // may occur while attempting to connect with Google.
-        //
         // More about this in the 'Handle Connection Failures' section.
-
     }
 
     @Override
@@ -153,21 +149,6 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
 
     }
 
-    /**
-     * Sets up the map if it is possible to do so (i.e., the Google Play services APK is correctly
-     * installed) and the map has not already been instantiated.. This will ensure that we only ever
-     * call {@link #setUpMap()} once when {@link #mMap} is not null.
-     * <p/>
-     * If it isn't installed {@link SupportMapFragment} (and
-     * {@link com.google.android.gms.maps.MapView MapView}) will show a prompt for the user to
-     * install/update the Google Play services APK on their device.
-     * <p/>
-     * A user can return to this FragmentActivity after following the prompt and correctly
-     * installing/updating/enabling the Google Play services. Since the FragmentActivity may not
-     * have been completely destroyed during this process (it is likely that it would only be
-     * stopped or paused), {@link #onCreate(Bundle)} may not be called again so we should call this
-     * method in {@link #onResume()} to guarantee that it will be called.
-     */
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
@@ -177,16 +158,18 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
+                mMap.setMyLocationEnabled(true);
+                mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+                    @Override
+                    public void onMapClick(LatLng latLng) {
+                        AddMarkertoMap(mMap.getCameraPosition().target, "This is your current screen coordinates");
+                    }
+                });
+
             }
         }
     }
 
-    /**
-     * This is where we can add markers or lines, add listeners or move the camera. In this case, we
-     * just add a marker near Africa.
-     * <p/>
-     * This should only be called once and when we are sure that {@link #mMap} is not null.
-     */
     private void setUpMap() {
         //mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
     }
@@ -198,11 +181,7 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
         double currentLongitude = location.getLongitude();
         LatLng latLng = new LatLng(currentLatitude, currentLongitude);
 
-        //mMap.addMarker(new MarkerOptions().position(new LatLng(currentLatitude, currentLongitude)).title("Current Location"));
-        MarkerOptions options = new MarkerOptions()
-                .position(latLng)
-                .title("This is your current location");
-        mMap.addMarker(options);
+        AddMarkertoMap(latLng, "This is your current location");
         CameraPosition cameraPosition = new CameraPosition.Builder()
                 .target(new LatLng(location.getLatitude(), location.getLongitude()))      // Sets the center of the map to location user
                 .zoom(17)                   // Sets the zoom
@@ -210,67 +189,91 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
                 .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                 .build();                   // Creates a CameraPosition from the builder
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+    }
 
-        //searchAddress();
-
+    private void AddMarkertoMap(LatLng latlng, String markerText){
+        MarkerOptions options = new MarkerOptions()
+                .position(latlng)
+                .title(markerText)
+                .draggable(true);
+        mMap.clear();
+        mMap.addMarker(options);
     }
 
     private void getMyLocation()
     {
         Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (mLastLocation != null) {
-//            mMap.setMyLocationEnabled(true);
-//            Location mylocation  = mMap.getMyLocation();
-            final LatLng location = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+
+            LatLng latLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+
+            AddMarkertoMap(latLng, "This is your current location");
             CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(location)      // Sets the center of the map to location user
+                    .target(latLng)      // Sets the center of the map to location user
                     .zoom(17)                   // Sets the zoom
                     .bearing(90)                // Sets the orientation of the camera to east
                     .tilt(40)                   // Sets the tilt of the camera to 30 degrees
                     .build();                   // Creates a CameraPosition from the builder
             mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-    }
 
+            Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
+            try {
+                List<Address> addresses = geoCoder.getFromLocation(mLastLocation.getLatitude(), mLastLocation.getLongitude(), 5);
+                if (addresses.size() > 0) {
 
-
-    };
-
-    public void searchAddress()
-    {
-
-    String address = "266 Albert Street, Waterkloof";
-
-    /* get latitude and longitude from the adderress */
-
-        edtAddress = (EditText)findViewById(R.id.autoCompleteTextView);
-        address = edtAddress.getText().toString();
-
-        Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
-        try {
-            List<Address> addresses = geoCoder.getFromLocationName(address, 5);
-            if (addresses.size() > 0) {
-
-                Double lat = (double) (addresses.get(0).getLatitude());
-                Double lon = (double) (addresses.get(0).getLongitude());
-
-                Log.d("lat-long", "" + lat + "......." + lon);
-                final LatLng FoundLocation = new LatLng(lat, lon);
-                MarkerOptions options = new MarkerOptions()
-                        .position(FoundLocation)
-                        .title("This is the location that you searched");
-                mMap.addMarker(options);
-
-                CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(FoundLocation)      // Sets the center of the map to location user
-                        .zoom(17)                   // Sets the zoom
-                        .bearing(90)                // Sets the orientation of the camera to east
-                        .tilt(40)                   // Sets the tilt of the camera to 30 degrees
-                        .build();                   // Creates a CameraPosition from the builder
-                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
+                    String address = addresses.get(0).getAddressLine(0) + ", " +
+                            addresses.get(0).getAddressLine(1) + ", " +
+                            addresses.get(0).getCountryName();
+                    autoCompView.setOnItemClickListener(null);
+                    edtAddress = (EditText)findViewById(R.id.autoCompleteTextView);
+                    edtAddress.setText(address);
+                    autoCompView.setOnItemClickListener(new OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            searchAddress("");
+                        }
+                    });
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+
+    }
+};
+
+    public void searchAddress(String input)
+    {
+        String address = input;
+        /* get latitude and longitude from the adderress */
+        if (address == "") {
+            edtAddress = (EditText)findViewById(R.id.autoCompleteTextView);
+            address = edtAddress.getText().toString();
+        }
+        if (address != "") {
+            Geocoder geoCoder = new Geocoder(this, Locale.getDefault());
+            try {
+                List<Address> addresses = geoCoder.getFromLocationName(address, 5);
+                if (addresses.size() > 0) {
+
+                    Double lat = (double) (addresses.get(0).getLatitude());
+                    Double lon = (double) (addresses.get(0).getLongitude());
+
+                    Log.d("lat-long", "" + lat + "......." + lon);
+                    final LatLng FoundLocation = new LatLng(lat, lon);
+
+                    AddMarkertoMap(FoundLocation, "This is the location that you searched");
+                    CameraPosition cameraPosition = new CameraPosition.Builder()
+                            .target(FoundLocation)      // Sets the center of the map to location user
+                            .zoom(17)                   // Sets the zoom
+                            .bearing(90)                // Sets the orientation of the camera to east
+                            .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                            .build();                   // Creates a CameraPosition from the builder
+                    mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

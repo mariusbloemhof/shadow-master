@@ -1,9 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background_login"
+    android:paddingBottom="0dp"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     tools:context="com.shadow.beast.shadow_master.AddressActivity">
 
+    <LinearLayout
+        android:id="@+id/custom_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/background_actionbar"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_back_addAddress"
+            style="@style/Shadow.Button.ThirdPartyLogin"
+            android:layout_width="87dp"
+            android:layout_height="34dp"
+            android:layout_alignTop="@+id/linearLayout"
+            android:layout_margin="4dp"
+            android:background="@drawable/selector_actionbar_button"
+            android:drawableLeft="@drawable/com_shadow_back_orange_64"
+            android:text="Back"
+            android:textColor="@color/com_shadow_actionbar_text"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="fill_parent"
+            android:layout_height="29dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingRight="20dp"
+            android:text="Signup / Add Address"
+            android:textAlignment="textEnd"
+            android:textColor="@color/com_shadow_actionbar_text"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -12,8 +49,10 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/custom_action_bar"
+        android:layout_above="@+id/custom_wizard_bar"
         tools:context="com.shadow.beast.shadow_master.MapsActivity"
-
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -24,13 +63,14 @@
         android:id="@+id/searchAddress"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/custom_action_bar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
         <AutoCompleteTextView
             android:drawableLeft="@drawable/com_shadow_magnifier_black_64"
-                        android:padding="5dp"
+            android:drawablePadding="5dp"
+            android:padding="12dp"
             android:id="@+id/autoCompleteTextView"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -40,7 +80,11 @@
             android:textSize="15dp"
             android:alpha="1"
             android:textColor="@color/com_facebook_button_background_color_focused_disabled"
-            android:allowUndo="true">
+            android:allowUndo="true"
+            android:autoText="true"
+            android:completionHint="Completion hint"
+            android:clickable="false"
+            android:hint="Search for home address">
         </AutoCompleteTextView>
 
         <Button
@@ -52,8 +96,34 @@
             android:background="@color/colorWhite"
             android:visibility="visible"
             android:layout_gravity="center_horizontal" />
-
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/custom_wizard_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-1dp"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="-1dp"
+        android:layout_margin="-1dp"
+        android:background="@drawable/background_actionbar"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_next_signup"
+            style="@style/Shadow.Button.ThirdPartyLogin"
+            android:layout_width="87dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:gravity="right|center_vertical"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="4dp"
+            android:background="@drawable/selector_actionbar_button"
+            android:drawableLeft="@drawable/com_shadow_back_orange_64_right"
+            android:text="Next"
+            android:textColor="@color/com_shadow_actionbar_text"
+            android:textSize="18sp" />
+    </RelativeLayout>
 
 </RelativeLayout>
