@@ -105,7 +105,7 @@ public class MapsActivity extends FragmentActivity implements LocationProvider.L
             }
         });
 
-        Button btnsignupBack = (Button)findViewById(R.id.btn_back_addAddress);
+        Button btnsignupBack = (Button)findViewById(R.id.btn_back_addLocation);
         btnsignupBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 finish();
